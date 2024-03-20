@@ -407,6 +407,12 @@ with gr.Blocks(
 
             Our vision behind the Chatbot Guardrails Arena is to establish the trusted benchmark for AI chatbot security, privacy, and guardrails. With a large-scale blind stress test by end users, this arena offers an unbiased and practical assessment of the reliability of privacy guardrails. 
             
+            ### Want to continue the fun? Sign up to be an LLM stress tester and/or get your AI apps stress tested
+            
+            If you enjoy stress testing real-world LLMs and AI applications, you can sign up to be a stress tester here: https://forms.gle/VhJXBdEBvsHh6JwY6
+            
+            If you are building an LLM or AI application and want to stress test it using automated and AI methods, contact us at srijan@lighthouz.ai.
+            
             ### Stay Connected
             
             For updates on our latest developments and future releases, follow us on [Twitter](https://twitter.com/lighthouzai), [LinkedIn](https://www.linkedin.com/company/lighthouz-ai) or contact us via email at srijan@lighthouz.ai.
