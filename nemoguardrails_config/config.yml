@@ -1,0 +1,36 @@
+models:
+  - type: self_check_input
+    engine: openai
+    model: gpt-3.5-turbo-instruct
+    parameters:
+      temperature: 0
+
+  - type: self_check_output
+    engine: openai
+    model: gpt-3.5-turbo-instruct
+    parameters:
+      temperature: 0
+
+rails:
+  config:
+    sensitive_data_detection:
+      output:
+        entities:
+          - PERSON
+          - EMAIL_ADDRESS
+          - PHONE_NUMBER
+          - PASSWORD
+          - ACCOUNT_NUMBER
+          - DATE_TIME
+          - US_SSN
+          - US_BANK_NUMBER
+          - LOCATION
+
+  input:
+    flows:
+      - self check input
+
+  output:
+    flows:
+      - self check output
+      - mask sensitive data on output
