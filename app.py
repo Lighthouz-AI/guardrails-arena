@@ -333,7 +333,7 @@ with gr.Blocks(
                 components=chatbots + states + show_models + [conversation_id],
             )
             regenerate_btn = gr.Button(
-                value="🔄  Regenerate", interactive=False, elem_id="regenerate_btn"
+                value="🔄 Regenerate", interactive=False, elem_id="regenerate_btn"
             )
             share_twitter_btn = gr.Button(
                 value="Share success on Twitter",
