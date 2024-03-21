@@ -204,12 +204,12 @@ with gr.Blocks(
         background-color: #4b5563 !important;
     }
     .dark #hf-logo {
-        background-image: url("file/static/hf-logo-with-white-title.png") !important;
+        background-image: url("https://arena.lighthouz.ai/file/static/hf-logo-with-white-title.png") !important;
     }
     #hf-logo {
         width: 140px;
         height: 33px;
-        background-image: url("file/static/hf-logo-with-title.png");
+        background-image: url("https://arena.lighthouz.ai/file/static/hf-logo-with-title.png");
         background-size: cover; /* Adjust as needed */
         background-position: center;
     }
@@ -231,7 +231,7 @@ with gr.Blocks(
         """
         <div style="display: flex; align-items: center; margin-bottom: -1rem;">
             <a href="https://lighthouz.ai" target="_blank" rel="noopener noreferrer">
-                <img style="width: 100px; margin-right: 10px;" src="file/static/lighthouzai-logo-full.png">
+                <img style="width: 100px; margin-right: 10px;" src="https://arena.lighthouz.ai/file/static/lighthouzai-logo-full.png">
             </a>
             <div style="width: 1.5px; background-color: #777; height: 100%; margin-right: 10px; height: 32px"></div>
             <a href="https://huggingface.co" target="_blank" rel="noopener noreferrer">
