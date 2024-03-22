@@ -3,7 +3,7 @@ import random
 from typing import List, Optional
 
 import openai
-from google.generativeai.types import BlockedPromptException, StopCandidateException
+from google.generativeai.types import BlockedPromptException, StopCandidateException, HarmCategory, HarmBlockThreshold
 from langchain_community.chat_models import ChatAnyscale
 from langchain_core.messages import AIMessage, HumanMessage, SystemMessage
 from langchain_google_genai import ChatGoogleGenerativeAI
@@ -383,6 +383,7 @@ def gemini_pro_nemoguardrails(
             temperature=temperature,
             max_retries=6,
             metadata={"top_p": top_p, "max_output_tokens": max_output_tokens},
+            safety_settings={ HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT: HarmBlockThreshold.BLOCK_NONE, HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT: HarmBlockThreshold.BLOCK_NONE, HarmCategory.HARM_CATEGORY_HATE_SPEECH: HarmBlockThreshold.BLOCK_NONE, HarmCategory.HARM_CATEGORY_HARASSMENT: HarmBlockThreshold.BLOCK_NONE, },
         ),
     )
     completion = rails.generate(messages=messages)
