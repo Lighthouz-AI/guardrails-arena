@@ -3,7 +3,7 @@ import random
 from typing import List, Optional
 
 import openai
-from google.generativeai.types import BlockedPromptException
+from google.generativeai.types import BlockedPromptException, StopCandidateException
 from langchain_community.chat_models import ChatAnyscale
 from langchain_core.messages import AIMessage, HumanMessage, SystemMessage
 from langchain_google_genai import ChatGoogleGenerativeAI
@@ -124,7 +124,9 @@ def gemini_pro(
         for message in ai_message:
             yield message.content
     except BlockedPromptException:
-        yield "⚠️ I'm sorry, I cannot respond to that. (The LLM blocked this message)"
+        yield "⚠️ I'm sorry, I cannot respond to that. (The input was blocked by the LLM)"
+    except StopCandidateException:
+        yield "⚠️ I'm sorry, I cannot respond to that. (The output was blocked by the LLM)"
 
 
 ### LLAMA GUARD ###
@@ -264,6 +266,8 @@ def gemini_pro_llamaguard(
                 for message in response:
                     yield message
         except BlockedPromptException:
+            yield "⚠️ I'm sorry, I cannot respond to that. (The input was blocked by the LLM)"
+        except StopCandidateException:
             yield "⚠️ I'm sorry, I cannot respond to that. (The output was blocked by the LLM)"
 
 
@@ -389,50 +393,50 @@ def gemini_pro_nemoguardrails(
 
 def get_all_models():
     return [
-        {
-            "name": "gpt3.5-turbo-1106",
-            "model": gpt35_turbo,
-        },
-        {
-            "name": "Llama-2-70b-chat-hf",
-            "model": llama70B,
-        },
-        {
-            "name": "Mixtral-8x7B-Instruct-v0.1",
-            "model": mixtral7x8,
-        },
+        # {
+        #     "name": "gpt3.5-turbo-1106",
+        #     "model": gpt35_turbo,
+        # },
+        # {
+        #     "name": "Llama-2-70b-chat-hf",
+        #     "model": llama70B,
+        # },
+        # {
+        #     "name": "Mixtral-8x7B-Instruct-v0.1",
+        #     "model": mixtral7x8,
+        # },
         {
             "name": "Gemini-Pro",
             "model": gemini_pro,
         },
-        {
-            "name": "gpt3.5-turbo-1106 + Llama Guard",
-            "model": gpt35_turbo_llamaguard,
-        },
-        {
-            "name": "Llama-2-70b-chat-hf + Llama Guard",
-            "model": llama70B_llamaguard,
-        },
-        {
-            "name": "Mixtral-8x7B-Instruct-v0.1 + Llama Guard",
-            "model": mixtral7x8_llamaguard,
-        },
-        {
-            "name": "Gemini-Pro + Llama Guard",
-            "model": gemini_pro_llamaguard,
-        },
-        {
-            "name": "gpt3.5-turbo-1106 + NeMo Guardrails",
-            "model": gpt35_turbo_nemoguardrails,
-        },
-        {
-            "name": "Llama-2-70b-chat-hf + NeMo Guardrails",
-            "model": llama70B_nemoguardrails,
-        },
-        {
-            "name": "Mixtral-8x7B-Instruct-v0.1 + NeMo Guardrails",
-            "model": mixtral7x8_nemoguardrails,
-        },
+        # {
+        #     "name": "gpt3.5-turbo-1106 + Llama Guard",
+        #     "model": gpt35_turbo_llamaguard,
+        # },
+        # {
+        #     "name": "Llama-2-70b-chat-hf + Llama Guard",
+        #     "model": llama70B_llamaguard,
+        # },
+        # {
+        #     "name": "Mixtral-8x7B-Instruct-v0.1 + Llama Guard",
+        #     "model": mixtral7x8_llamaguard,
+        # },
+        # {
+        #     "name": "Gemini-Pro + Llama Guard",
+        #     "model": gemini_pro_llamaguard,
+        # },
+        # {
+        #     "name": "gpt3.5-turbo-1106 + NeMo Guardrails",
+        #     "model": gpt35_turbo_nemoguardrails,
+        # },
+        # {
+        #     "name": "Llama-2-70b-chat-hf + NeMo Guardrails",
+        #     "model": llama70B_nemoguardrails,
+        # },
+        # {
+        #     "name": "Mixtral-8x7B-Instruct-v0.1 + NeMo Guardrails",
+        #     "model": mixtral7x8_nemoguardrails,
+        # },
         {
             "name": "Gemini-Pro + NeMo Guardrails",
             "model": gemini_pro_nemoguardrails,
