@@ -639,4 +639,5 @@ with gr.Blocks(
 
 
 if __name__ == "__main__":
+    demo.queue(default_concurrency_limit=10)
     demo.launch(show_api=False, allowed_paths=["./static"])
