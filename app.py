@@ -259,7 +259,7 @@ with gr.Blocks(
         """
         [Blog](https://huggingface.co/blog/arena-lighthouz) | [Twitter](https://twitter.com/lighthouzai) | [LinkedIn](https://www.linkedin.com/company/lighthouz-ai) | [Want to continue the fun? Sign up to be an AI evaluator](https://forms.gle/NBS7e7tav5ZYgoWK9) | [Want to get your AI models stress tested? Sign up here](https://forms.gle/ecM1eCxFeraoVDgH7)
         """,
-        elem_classes=["w-100", "text-center"]
+        elem_classes=["w-100", "text-center"],
     )
     with gr.Tab(label="⚔️ Arena"):
         gr.Markdown(
