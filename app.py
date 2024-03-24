@@ -216,8 +216,16 @@ with gr.Blocks(
     #model_description_markdown table {
         width: 100%;
     }
+    .w-100 {
+        width: 100% !important;
+    }
+    .w-100 table {
+        width: 100% !important;
+    }
+    .text-center {
+        text-align: center;
+    }
     """,
-    fill_height=True,
     js="""
     function () {
         let searchParams = new URLSearchParams(window.location.search);
@@ -243,9 +251,15 @@ with gr.Blocks(
     gr.Markdown(
         """
         <div align="center">
-            <h1 style="display: inline-block; margin-bottom: -1.5rem;">Chatbot Guardrails Arena</h1>
+            <h1 style="display: inline-block; margin-bottom: -1.8rem;">Chatbot Guardrails Arena</h1>
         </div>
         """
+    )
+    gr.Markdown(
+        """
+        [Blog](https://huggingface.co/blog/arena-lighthouz) | [Twitter](https://twitter.com/lighthouzai) | [LinkedIn](https://www.linkedin.com/company/lighthouz-ai) | [Want to continue the fun? Sign up to be an AI evaluator](https://forms.gle/NBS7e7tav5ZYgoWK9) | [Want to get your AI models stress tested? Sign up here](https://forms.gle/ecM1eCxFeraoVDgH7)
+        """,
+        elem_classes=["w-100", "text-center"]
     )
     with gr.Tab(label="⚔️ Arena"):
         gr.Markdown(
@@ -636,7 +650,6 @@ with gr.Blocks(
     # share_linkedin_btn.click(None, inputs=[], outputs=[], js=share_js_linkedin)
 
     # random_example_btn.click(textbox_random_example, inputs=[], outputs=[textbox])
-
 
 if __name__ == "__main__":
     demo.queue(default_concurrency_limit=10)
