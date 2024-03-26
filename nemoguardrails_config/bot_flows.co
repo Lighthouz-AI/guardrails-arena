@@ -12,5 +12,12 @@ define flow self check output
     bot refuse to respond
     stop
 
+define flow detect sensitive data on output
+  $has_sensitive_data = execute detect_sensitive_data(source="output", text=$bot_message)
+
+  if $has_sensitive_data
+    bot refuse to respond
+    stop
+
 define bot refuse to respond
   "⚠️ I'm sorry, I can't respond to that. (This message was blocked by the guardrail)"
