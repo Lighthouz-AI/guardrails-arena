@@ -8,7 +8,7 @@ sdk_version: 4.21.0
 app_file: app.py
 pinned: false
 license: cc-by-nc-sa-4.0
-short_description: Jailbreak the privacy guardrails and vote for the secure chatbot(s)
+short_description: Jailbreak the LLM and privacy guardrails
 tags: [
   "Chatbot Guardrails Arena",
   "Lighthouz AI",

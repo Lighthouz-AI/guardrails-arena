@@ -264,7 +264,7 @@ with gr.Blocks(
     with gr.Tab(label="⚔️ Arena"):
         gr.Markdown(
             """
-            ## ⚔️ Goal: Jailbreak the Privacy Guardrails and Vote for the Secure Model(s)
+            ## ⚔️ Goal: Jailbreak the Privacy Guardrails and Vote for the Secure Chatbot(s)
             
             ### Rules
             - You are presented with two customer service chatbots of a hypothetical XYZ001 bank. 
