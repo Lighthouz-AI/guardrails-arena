@@ -33,4 +33,4 @@ rails:
   output:
     flows:
       - self check output
-      - mask sensitive data on output
+      - detect sensitive data on output
