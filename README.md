@@ -1,8 +1,8 @@
 ---
 title: Guardrails Arena
 emoji: ⚔️
-colorFrom: indigo
-colorTo: indigo
+colorFrom: yellow
+colorTo: red
 sdk: gradio
 sdk_version: 4.21.0
 app_file: app.py
