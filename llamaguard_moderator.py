@@ -127,8 +127,6 @@ Provide your safety assessment for $agent_type in the above conversation:
 - If unsafe, a second line must include a comma-separated list of violated categories."""
 )
 
-print(PROMPT_TEMPLATE)
-
 
 def format_prompt(role, message):
     prompt = PROMPT_TEMPLATE.substitute(prompt=message, agent_type=role)

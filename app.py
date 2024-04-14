@@ -13,6 +13,7 @@ from guardrails_buttons import (
     deactivate_invisible_vote_buttons,
     deactivate_textbox,
     deactivate_visible_vote_buttons,
+    get_rankings,
     leftvote,
     rightvote,
     share_js,
@@ -213,7 +214,7 @@ with gr.Blocks(
         background-size: cover; /* Adjust as needed */
         background-position: center;
     }
-    #model_description_markdown table {
+    #model_description_markdown table, #leaderboard table {
         width: 100%;
     }
     .w-100 {
@@ -280,6 +281,7 @@ with gr.Blocks(
         states = [gr.State() for _ in range(num_sides)]
         chatbots = [None] * num_sides
         models = gr.State(get_random_models)
+        rankings = gr.State("")
         system_prompt = gr.State(get_random_system_prompt)
         show_models = [None] * num_sides
         conversation_id = gr.State()
@@ -447,14 +449,10 @@ with gr.Blocks(
             """
         )
 
-    with gr.Tab(label="🏆 Leaderboard"):
-        gr.Markdown(
-            """
-            ## 🏆 Guardrails Leaderboard
-            
-            We will launch the guardrails leaderboard once enough votes are collected. Ranking will be calculated based on ELO ratings. Keep playing so that we can collect enough data.
-            """
-        )
+    with gr.Tab(label="🏆 Leaderboard", elem_id="leaderboard") as leaderboard_tab:
+        gr.Markdown("## 🏆 Guardrails Leaderboard")
+        rankings = gr.Markdown("")
+        leaderboard_tab.select(get_rankings, None, [rankings])
 
     gr.Markdown(
         """

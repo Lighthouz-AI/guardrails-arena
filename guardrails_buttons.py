@@ -143,6 +143,33 @@ def bothbadvote(conversation_id, history1, history2):
         pass
 
 
+def get_rankings():
+    try:
+        response = requests.get(f"{LIGHTHOUZ_API_URL}/rankings")
+        ratings = response.json()["ratings"]
+        sorted_ratings = dict(
+            sorted(ratings.items(), key=lambda item: item[1], reverse=True)
+        )
+
+        markdown_table = "| Rank | Chatbots | Arena Elo |\n|:-----:|-----|-------|\n"
+        current_rank = 1
+        last_value = None
+        rank_increment = 0
+        for key, value in sorted_ratings.items():
+            rounded_value = round(value)
+            if last_value is None or rounded_value != last_value:
+                current_rank += rank_increment
+                rank_increment = 0
+            markdown_table += f"| {current_rank} | {key} | {rounded_value} |\n"
+            last_value = rounded_value
+            rank_increment += 1
+
+        return markdown_table
+    except Exception as e:
+        print(e)
+        return ""
+
+
 def show_models_fn(models):
     model_1 = gr.Markdown(" 🅰️ " + models[0]["name"])
     model_2 = gr.Markdown(" 🅱️ " + models[1]["name"])
